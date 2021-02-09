@@ -1,0 +1,22 @@
+#card:hover #overview {
+	transform: translateY(0%);
+	transition: transform 0.7s ease-in-out;
+	max-height: 100%;
+	overflow: auto;
+}
+
+.tag {
+	color: white;
+}
+.tag.green {
+	color: #affc41;
+}
+.tag.orange {
+	color: #f4845f;
+}
+.tag.red {
+	color: #d90429;
+}
+#container {
+	background-image: url("https://www.transparenttextures.com/patterns/foggy-birds.png");
+}
