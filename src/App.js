@@ -32,13 +32,19 @@ const App = () => {
 		setQuery(e.target.value);
 	};
 
-	const useStyles = makeStyles({
+	const useStyles = makeStyles((root) => ({
 		searchBarContainer: {
 			backgroundColor: "#A3C3D9",
 			height: "30vh",
 		},
 		input: {
-			width: "700px",
+			width: "600px",
+			[root.breakpoints.down("xs")]: {
+				width: "190px",
+			},
+			[root.breakpoints.down("md")]: {
+				width: "250px",
+			},
 		},
 		icon: {
 			height: "40px",
@@ -49,12 +55,13 @@ const App = () => {
 		root: {
 			justifyContent: "center",
 		},
-	});
+	}));
 	const classes = useStyles();
 	return (
 		<>
 			<Grid
 				container
+				xs={12}
 				direction="column"
 				justify="center"
 				alignItems="center"
