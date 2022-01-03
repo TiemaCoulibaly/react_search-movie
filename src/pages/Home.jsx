@@ -3,6 +3,7 @@ import { Box, Grid, TextField } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { makeStyles } from "@material-ui/core/styles";
 import Movie from "../components/Movie";
+import Movies from "../components/Movies";
 const url = `
 https://api.themoviedb.org/3/`;
 const Home = () => {
@@ -29,45 +30,9 @@ const Home = () => {
 		setQuery(e.target.value);
 	};
 
-	const useStyles = makeStyles((root) => ({
-		searchBarContainer: {
-			backgroundColor: "#A3C3D9",
-			height: "30vh",
-		},
-		input: {
-			width: "600px",
-			[root.breakpoints.down("xs")]: {
-				width: "190px",
-			},
-			[root.breakpoints.down("md")]: {
-				width: "250px",
-			},
-		},
-		icon: {
-			height: "40px",
-			width: "60px",
-			backgroundColor: "#1C6E8C",
-			color: "white",
-		},
-		root: {
-			justifyContent: "center",
-		},
-	}));
-	const classes = useStyles();
 	return (
-		<div>
-			<Grid
-				container
-				xs={12}
-				direction="column"
-				justify="center"
-				alignItems="center"
-				id="container"
-				className={classes.searchBarContainer}>
-				<h1>Search Movie App</h1>
-				<form onSubmit={handleSubmit}>
-					<br />
-					<TextField
+		<div className="bg-night">
+			{/* <TextField
 						className={classes.input}
 						variant="outlined"
 						required="true"
@@ -76,17 +41,12 @@ const Home = () => {
 						label="E.g fast and furious"
 						size="small"
 						onChange={handleChange}
-					/>
-					<button className={classes.icon}>
-						<SearchIcon />
-					</button>
-				</form>
-			</Grid>
-			<Box className={classes.root} display="flex" flexWrap="wrap">
-				{movies.map((movie) => (
-					<Movie key={movie.id} {...movie} />
-				))}
-			</Box>
+					/> */}
+
+			<h2 className="font-bold text-3xl mb-2 text-orange">
+				POPULAR MOVIES
+			</h2>
+			<Movies movies={movies} />
 		</div>
 	);
 };

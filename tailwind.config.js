@@ -6,6 +6,7 @@ module.exports = {
 			night: "#0F1B2B",
 			moon: "#2B3543",
 			white: "#ffffff",
+			orange: "#FFC045",
 		},
 		extend: {},
 	},
