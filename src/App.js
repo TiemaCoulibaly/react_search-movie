@@ -3,8 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Box, Grid, TextField } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 
-import Movie from "./components/Movie";
-import Footer from "./components/Footer";
+import Movie from "./components/Movie.jsx";
+import Footer from "./components/Footer.jsx";
 
 const url = `
 https://api.themoviedb.org/3/`;
