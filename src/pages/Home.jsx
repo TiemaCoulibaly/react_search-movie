@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Grid, TextField } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
-import { makeStyles } from "@material-ui/core/styles";
-import Movie from "../components/Movie";
+
 import Movies from "../components/Movies";
 const url = `
 https://api.themoviedb.org/3/`;

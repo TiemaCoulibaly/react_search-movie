@@ -1,17 +1,8 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
 
 const Footer = () => {
-	const useStyles = makeStyles({
-		footer: {
-			textAlign: "center",
-			backgroundColor: "#A3C3D9",
-		},
-	});
-
-	const classes = useStyles();
 	return (
-		<footer className={classes.footer}>
+		<footer className="flex justify-center p-2 bg-night  text-white">
 			&copy;{" "}
 			<span>
 				<a

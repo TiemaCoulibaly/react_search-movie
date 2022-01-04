@@ -7,6 +7,7 @@ module.exports = {
 			moon: "#2B3543",
 			white: "#ffffff",
 			orange: "#FFC045",
+			red: "#E51937",
 		},
 		extend: {},
 	},

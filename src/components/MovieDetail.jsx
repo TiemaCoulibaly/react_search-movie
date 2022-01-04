@@ -1,7 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const MovieDetail = () => {
-	return <div>MOVIEDETAILS</div>;
+	const [movieDetails, setMovieDetails] = useState("");
+	const [genres, setGenres] = useState([]);
+
+	const location = useLocation();
+	const path = location.pathname.split("/")[2];
+
+	const imgUrl = "https://image.tmdb.org/t/p/w185_and_h278_bestv2/";
+	useEffect(() => {
+		axios
+			.get(
+				`https://api.themoviedb.org/3/movie/${path}?api_key=269092cda2d99dce0a9ea3056009516c&language=en-US`
+			)
+			.then((response) => {
+				setMovieDetails(response.data);
+				setGenres(response.data.genres);
+			});
+	}, [path]);
+
+	return (
+		<>
+			<div className="bg-night text-white shadow-lg overflow-hidden py-28">
+				<div className="w-full flex flex-col justify-center md:flex-row">
+					<div className="p-4">
+						<img
+							src={imgUrl + movieDetails.poster_path}
+							className="h-auto w-full object-cover lg:h-full md:h-full lg:w-96 md:w-96 rounded-lg"
+							title="Mountain"
+							alt="lorem"
+						/>
+					</div>
+					<div className="p-8 lg:w-1/4 md:w-3/4">
+						<div className="uppercase tracking-wide text-indigo-500 font-semibold text-2xl lg:text-3xl md:text-3xl">
+							{movieDetails.title}
+						</div>
+
+						<p className="mt-2 text-lg">{movieDetails.overview}</p>
+						<div className="flex justify-center p-1 lg:p-6 md:p-6">
+							{genres.map((genre) => (
+								<p className="inline-block bg-orange rounded-full px-4 p-2 lg:p-2 md:p-2 font-semibold text-base lg:text-lg md:text-lg  text-night  mr-2 mb-2">
+									{genre.name}
+								</p>
+							))}
+						</div>
+						<div className="flex justify-center">
+							<a
+								className="bg-red text-lg p-2 rounded-lg"
+								href={movieDetails.homepage}
+								alt="movie"
+								target="_blank"
+								rel="noreferrer">
+								Watch on Netflix
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default MovieDetail;
