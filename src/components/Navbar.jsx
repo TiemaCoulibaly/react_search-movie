@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
 	return (
 		<>
 			<nav className="w-full flex flex-row items-center p-3 justify-around bg-night shadow-xs border-b-2 border-moon ">
@@ -12,6 +12,8 @@ const Navbar = () => {
 					<input
 						type="search"
 						name="search"
+						value={props.query}
+						onChange={(e) => props.setQuery(e.target.value)}
 						placeholder="Search"
 						className="flex-grow px-4 bg-moon text-white rounded-l-full rounded-r-full text-sm focus:outline-none"
 					/>

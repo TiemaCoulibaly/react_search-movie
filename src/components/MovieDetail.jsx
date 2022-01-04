@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import Navbar from "./Navbar";
 
 const MovieDetail = () => {
 	const [movieDetails, setMovieDetails] = useState("");
@@ -23,6 +24,7 @@ const MovieDetail = () => {
 
 	return (
 		<>
+			<Navbar />
 			<div className="bg-night text-white shadow-lg overflow-hidden py-28">
 				<div className="w-full flex flex-col justify-center md:flex-row">
 					<div className="p-4">
@@ -39,9 +41,9 @@ const MovieDetail = () => {
 						</div>
 
 						<p className="mt-2 text-lg">{movieDetails.overview}</p>
-						<div className="flex justify-center p-1 lg:p-6 md:p-6">
+						<div className="flex justify-center p-1">
 							{genres.map((genre) => (
-								<p className="inline-block bg-orange rounded-full px-4 p-2 lg:p-2 md:p-2 font-semibold text-base lg:text-lg md:text-lg  text-night  mr-2 mb-2">
+								<p className="inline-block bg-orange rounded-full p-1 font-semibold text-base lg:text-lg md:text-lg  text-night  mr-2 mb-2">
 									{genre.name}
 								</p>
 							))}
