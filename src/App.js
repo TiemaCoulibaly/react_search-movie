@@ -5,7 +5,7 @@ import Footer from "./components/Footer.jsx";
 import MovieDetail from "./components/MovieDetail.jsx";
 
 import Navbar from "./components/Navbar.jsx";
-import NotFound from "./components/NotFound.jsx";
+import NotFound from "./pages/NotFound.jsx";
 import Home from "./pages/Home.jsx";
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
 			<Routes>
 				<Route exact path="/" element={<Home />} />
 				<Route path="/movie/:movieId" element={<MovieDetail />} />
-				<Route path="*" element={NotFound} />
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 
 			<Footer />
