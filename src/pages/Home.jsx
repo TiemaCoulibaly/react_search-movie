@@ -11,7 +11,7 @@ const Home = () => {
 	const [query, setQuery] = useState("");
 
 	useEffect(() => {
-		const weekTrend = `trending/movie/week?api_key=269092cda2d99dce0a9ea3056009516c`;
+		const weekTrend = `trending/movie/week?api_key=${process.env.REACT_APP_KEY}`;
 
 		axios.get(url + weekTrend).then((response) => {
 			setMovies(response.data.results);
@@ -19,7 +19,7 @@ const Home = () => {
 	}, []);
 
 	useEffect(() => {
-		const movieSearch = `search/movie?api_key=269092cda2d99dce0a9ea3056009516c&language=en-US&query=${query}&page=1&include_adult=false`;
+		const movieSearch = `search/movie?api_key=${process.env.REACT_APP_KEY}&language=en-US&query=${query}&page=1&include_adult=false`;
 
 		axios.get(url + movieSearch).then((response) => {
 			setMovies(response.data.results);

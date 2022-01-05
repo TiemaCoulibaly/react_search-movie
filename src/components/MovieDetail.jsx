@@ -14,7 +14,7 @@ const MovieDetail = () => {
 	useEffect(() => {
 		axios
 			.get(
-				`https://api.themoviedb.org/3/movie/${path}?api_key=269092cda2d99dce0a9ea3056009516c&language=en-US`
+				`https://api.themoviedb.org/3/movie/${path}?api_key=${process.env.REACT_APP_KEY}&language=en-US`
 			)
 			.then((response) => {
 				setMovieDetails(response.data);
