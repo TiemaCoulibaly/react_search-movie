@@ -4,37 +4,108 @@ import Movies from "../components/Movies";
 
 import Navbar from "../components/Navbar";
 import axios from "axios";
-const url = `
-https://api.themoviedb.org/3/`;
+// import Header from "../components/Header";
+const URL = `https://api.themoviedb.org/3`;
+const API_KEY = process.env.REACT_APP_KEY;
+
+const endpoints = {
+	originals: "/discover/tv",
+	trending: "/trending/all/week",
+	now_playing: "/movie/now_playing",
+	popular: "/movie/popular",
+	top_rated: "/movie/top_rated",
+	upcoming: "/movie/upcoming",
+};
 const Home = () => {
 	const [movies, setMovies] = useState([]);
 	const [query, setQuery] = useState("");
 
-	useEffect(() => {
-		const weekTrend = `trending/movie/week?api_key=${process.env.REACT_APP_KEY}`;
+	const [originals, setOriginals] = useState([]);
+	const [trending, setTrending] = useState([]);
+	const [nowPlaying, setNowPlaying] = useState([]);
+	const [popular, setPopular] = useState([]);
+	const [topRated, setTopRated] = useState([]);
+	const [upcoming, setUpcoming] = useState([]);
 
-		axios.get(url + weekTrend).then((response) => {
-			setMovies(response.data.results);
-		});
+	useEffect(() => {
+		//originals
+		axios
+			.get(`${URL}${endpoints.originals}`, {
+				params: {
+					api_key: API_KEY,
+				},
+			})
+			.then((res) => setOriginals(res.data.results));
+		// Load Trending
+		axios
+			.get(`${URL}${endpoints.trending}`, {
+				params: {
+					api_key: API_KEY,
+				},
+			})
+			.then((res) => setTrending(res.data.results));
+
+		// Load Now Playing
+		axios
+			.get(`${URL}${endpoints.now_playing}`, {
+				params: {
+					api_key: API_KEY,
+				},
+			})
+			.then((res) => setNowPlaying(res.data.results));
+
+		// Load Popular
+		axios
+			.get(`${URL}${endpoints.popular}`, {
+				params: {
+					api_key: API_KEY,
+				},
+			})
+			.then((res) => setPopular(res.data.results));
+
+		// Load Top Rated
+		axios
+			.get(`${URL}${endpoints.top_rated}`, {
+				params: {
+					api_key: API_KEY,
+				},
+			})
+			.then((res) => setTopRated(res.data.results));
+
+		// Load Upcoming
+		axios
+			.get(`${URL}${endpoints.upcoming}`, {
+				params: {
+					api_key: API_KEY,
+				},
+			})
+			.then((res) => setUpcoming(res.data.results));
 	}, []);
 
-	useEffect(() => {
-		const movieSearch = `search/movie?api_key=${process.env.REACT_APP_KEY}&language=en-US&query=${query}&page=1&include_adult=false`;
+	// useEffect(() => {
+	// 	const movieSearch = `search/movie?api_key=${process.env.REACT_APP_KEY}&language=en-US&query=${query}&page=1&include_adult=false`;
 
-		axios.get(url + movieSearch).then((response) => {
-			setMovies(response.data.results);
-		});
-	}, [query]);
+	// 	axios.get(url + movieSearch).then((response) => {
+	// 		setMovies(response.data.results);
+	// 	});
+	// }, [query]);
 
 	return (
 		<div className="bg-night">
+			{/* <Header image={movies[Math.floor(Math.random() * movies.length)]} /> */}
 			<Navbar query={query} setQuery={setQuery} />
-
-			<h2 className="font-bold text-3xl mb-2 text-orange">
-				POPULAR MOVIES
-			</h2>
-
-			<Movies movies={movies} />
+			<h2 className="font-bold text-3xl mb-2 text-orange">Originals</h2>
+			<Movies title="Netflix originals" movies={originals} />
+			<h2 className="font-bold text-3xl mb-2 text-orange">Trending</h2>
+			<Movies title="Trending" movies={trending} />
+			<h2 className="font-bold text-3xl mb-2 text-orange">Now Playing</h2>
+			<Movies title="Now Playing" movies={nowPlaying} />
+			<h2 className="font-bold text-3xl mb-2 text-orange">Popular</h2>
+			<Movies title="Popular" movies={popular} />
+			<h2 className="font-bold text-3xl mb-2 text-orange">Top Rated</h2>
+			<Movies title="Top Rated" movies={topRated} />
+			<h2 className="font-bold text-3xl mb-2 text-orange">Upcoming</h2>
+			<Movies title="Upcoming" movies={upcoming} />
 		</div>
 	);
 };

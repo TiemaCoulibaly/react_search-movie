@@ -6,9 +6,9 @@ const Movie = ({ id, title, poster_path, vote_average, release_date }) => {
 	return (
 		<>
 			<Link to={`/movie/${id}`}>
-				<div className="w-56 mx-4 rounded overflow-hidden shadow-md my-4 border hover:border-moon hover:shadow-2xl">
+				<div className="w-56 mx-4 rounded overflow-hidden shadow-md my-4 border hover:shadow-2xl transform transition duration-300 hover:scale-110 ">
 					<img
-						className="w-full object-fill hover:scale-75"
+						className="w-full object-fill"
 						src={
 							poster_path
 								? imgUrl + poster_path
@@ -16,7 +16,7 @@ const Movie = ({ id, title, poster_path, vote_average, release_date }) => {
 						}
 						alt={title}
 					/>
-					<div className="px-6 py-4">
+					{/* <div className="px-6 py-4">
 						<h3 className="font-bold text-lg mb-2 text-white">
 							{title}
 						</h3>
@@ -50,7 +50,7 @@ const Movie = ({ id, title, poster_path, vote_average, release_date }) => {
 								{release_date}
 							</p>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</Link>
 		</>
