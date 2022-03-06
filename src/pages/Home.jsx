@@ -36,7 +36,9 @@ const Home = () => {
 					api_key: API_KEY,
 				},
 			})
-			.then((res) => setOriginals(res.data.results));
+			.then((res) => {
+				setOriginals(res.data.results);
+			});
 		// Load Trending
 		axios
 			.get(`${URL}${endpoints.trending}`, {
@@ -100,6 +102,7 @@ const Home = () => {
 	return (
 		<div className="bg-night">
 			<Navbar query={query} setQuery={setQuery} />
+
 			{query ? (
 				<>
 					<MovieQuery movies={movies} />
