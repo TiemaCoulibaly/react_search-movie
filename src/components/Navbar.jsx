@@ -29,7 +29,7 @@ const Navbar = (props) => {
 						name="search"
 						value={props.query}
 						onChange={(e) => props.setQuery(e.target.value)}
-						placeholder="Search"
+						placeholder="eg: Fast and Furious..."
 						className="flex-grow px-4 bg-moon text-white rounded-l-full rounded-r-full text-sm focus:outline-none"
 					/>
 				</span>

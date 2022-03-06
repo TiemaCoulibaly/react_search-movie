@@ -3,10 +3,18 @@ import Movie from "./Movie";
 
 const Movies = ({ movies }) => {
 	return (
-		<div className="flex flex-wrap justify-center">
-			{movies.length > 0 &&
-				movies.map((movie) => <Movie key={movie.id} {...movie} />)}
-		</div>
+		<>
+			<div
+				id="movies"
+				className="flex
+      overflow-x-scroll
+			hide-scroll-bar
+      mt-4
+      p-4">
+				{movies.length > 0 &&
+					movies.map((movie) => <Movie key={movie.id} {...movie} />)}
+			</div>
+		</>
 	);
 };
 
