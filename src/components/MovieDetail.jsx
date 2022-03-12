@@ -22,8 +22,7 @@ const MovieDetail = () => {
 				setGenres(response.data.genres);
 			});
 	}, [path]);
-	console.log("details", movieDetails);
-	console.log("genre", genres);
+
 	return (
 		<>
 			<Navbar />
